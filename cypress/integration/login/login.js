@@ -16,7 +16,7 @@ describe('Test suite', () => {
         loginPage.fillPasswordField(password);
     });
 
-    When('And User presses Sign In button', () => {
+    When('User presses Sign In button', () => {
         loginPage.clickSubmitButton();
     })
 
