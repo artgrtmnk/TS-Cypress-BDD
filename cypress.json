@@ -1,0 +1,4 @@
+{
+    "baseUrl": "https://profile.oracle.com",
+    "testFiles": "**/*.feature"
+}
