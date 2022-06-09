@@ -8,11 +8,11 @@ describe('Test suite', () => {
         cy.visit('/')
     });
 
-    When('User inputs {email} as email', (email) => {
+    When('User inputs {string} as email', (email) => {
         loginPage.fillUserNameField(email);
     });
 
-    When('User inputs {password} as password', (password) => {
+    When('User inputs {string} as password', (password) => {
         loginPage.fillPasswordField(password);
     });
 
