@@ -1,3 +1,4 @@
+import token from '../fixtures/token.json'
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -23,3 +24,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.overwrite('request', (originalFn, options) => {
+    options.url = Cypress.config('baseUrl')
+    options.headers = {
+        Authorization: `Bearer ${token.token}`,
+        contentType: 'application/json',
+    };
+  
+    return originalFn(options);
+  });

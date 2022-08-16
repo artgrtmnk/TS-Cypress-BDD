@@ -3,7 +3,7 @@
 Feature: GoRest Rest API
 
   Background:
-    Given I set up a basic url as 'https://gorest.co.in/public/v2/users'
+    Given I set up a basic url as 'https://gorest.co.in/public/v2/users/'
 
   Scenario: 1: Get user list
     When I send a Get user list request
