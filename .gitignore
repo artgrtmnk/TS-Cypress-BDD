@@ -3,3 +3,4 @@ jenkins
 package-lock.json
 allure-results
 cypress/support/videos
+yarn.lock
