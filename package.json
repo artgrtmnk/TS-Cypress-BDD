@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Artem Gritsaenko",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^9.7.0",
@@ -15,5 +15,8 @@
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true
+  },
+  "dependencies": {
+    "typescript": "^4.7.4"
   }
 }

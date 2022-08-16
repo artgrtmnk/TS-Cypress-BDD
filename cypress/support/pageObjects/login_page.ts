@@ -1,18 +1,18 @@
 /// <reference types="cypress" />
 const elements = {
-    userNameField: () => cy.get('input[id="sso_username"]'),
-    passwordField: () => cy.get('input[id="ssopassword"]'),
-    submitButton: () => cy.get('input[id="signin_button"]'),
-    errorMessage: () => cy.get('span[id="errormsg"]'),
+    userNameField: () => cy.get('#sso_username'),
+    passwordField: () => cy.get('#ssopassword'),
+    submitButton: () => cy.get('#signin_button'),
+    errorMessage: () => cy.get('#errormsg'),
 
 }
 
 class LoginPage {
-    static fillUserNameField(username) {
+    static fillUserNameField(username: string) {
         elements.userNameField().type(username);
     }
 
-    static fillPasswordField(password) {
+    static fillPasswordField(password: string) {
         elements.passwordField().type(password);
     }
 
@@ -20,14 +20,14 @@ class LoginPage {
         elements.submitButton().click({ force: true });
     }
 
-    static login(username, password) {
+    static login(username: string, password: string) {
         this.fillUserNameField(username);
         this.fillPasswordField(password);
         this.clickSubmitButton();
     }
 
-    static checkErrorMessage(errorMsg) {
-        elements.errorMessage().invoke('text').then((text) => {
+    static checkErrorMessage(errorMsg: string) {
+        elements.errorMessage().invoke('text').then((text: string) => {
             expect(text).to.include(errorMsg);
         })
     }
