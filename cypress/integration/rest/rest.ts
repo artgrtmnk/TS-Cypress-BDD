@@ -13,33 +13,38 @@ describe('Rest Api Suite', () => {
     });
 
     When('I send a Get user list request', () => {
-        RestClient.getUserList().then((response) => reqResponse = response)
+        RestClient.getUserList()
+                .then((response) => reqResponse = response)
     });
 
     When('I send a Post create user request', () => {
-        RestClient.createUser(user).then((response) => reqResponse = response)
+        RestClient.createUser(user)
+                .then((response) => reqResponse = response)
     });
 
     When('I send a Get created user request', () => {
-        RestClient.getUser(user.id).then((response) => reqResponse = response)
+        RestClient.getUser(user.id)
+                .then((response) => reqResponse = response)
     });
 
     When('I send a Patch user request with body', (docString: string) => {
-        RestClient.patchUser(docString, user.id).then((response) => reqResponse = response)
+        RestClient.patchUser(docString, user.id)
+                .then((response) => reqResponse = response)
     });
 
     When('I send a Delete user request', () => {
-        RestClient.deleteUser(user.id).then((response) => reqResponse = response)
+        RestClient.deleteUser(user.id)
+                .then((response) => reqResponse = response)
     });
 
     Then('Response code is {int}', (code: number) => {
-        expect(reqResponse.status).to.eq(code, "Wrong response status code!");
+        expect(reqResponse.status).to.eq(code, "Response body contains correct data.");
     })
 
     Then('Response contains {string}', (expectedString: string) => {
         for (const prop in reqResponse.body) {
             if (prop.includes(expectedString))
-                expect(reqResponse.body).contains(expectedString, "Wrong response body!")
+                expect(reqResponse.body).contains(expectedString, "Response body contains correct data.")
           }
     })
 

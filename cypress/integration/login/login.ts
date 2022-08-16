@@ -5,6 +5,7 @@ import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps'
 
 describe('Test suite', () => {
     Given('User has opened Oracle Profile page', () => {
+        Cypress.config('baseUrl', 'https://profile.oracle.com')
         cy.visit('/')
     });
 

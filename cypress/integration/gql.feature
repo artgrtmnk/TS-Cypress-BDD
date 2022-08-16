@@ -1,16 +1,13 @@
-@api
-@gql
+@api @gql
 Feature: GoRest GraphQL API
 
-  Background:
+  Background: 
     Given GQL I set up a basic url as 'https://gorest.co.in/public/v2/graphql'
 
   Scenario: 1: Get user list using GraphQL
     When I send a GQL request with body
       """
-      {
-        "query":
-            "query  {
+      query  {
                 users {
                     pageInfo {
                         endCursor 
@@ -26,8 +23,7 @@ Feature: GoRest GraphQL API
                         status
                     }
                 }
-            }"
-        }
+            }
       """
     Then GQL Response code is 200
     But GQL Response does not contains '"errors"'
@@ -35,14 +31,12 @@ Feature: GoRest GraphQL API
   Scenario: 2: Create a new user using GraphQL
     When I send a GQL request with body
       """
-        {
-            "query":
-                "mutation{
+        mutation  {
                     createUser(input: {
-                        name: \"Default User\" 
-                        gender: \"female\" 
-                        email: \"default_email@gmail.com\" 
-                        status: \"active\"
+                        name: "Default User" 
+                        gender: "female" 
+                        email: "default_email@gmail.com" 
+                        status: "active"
                     }) 
                     {
                         user {
@@ -53,8 +47,7 @@ Feature: GoRest GraphQL API
                             status
                         }
                     }
-                }"
-        }
+                }
       """
     Then GQL Response code is 200
     And GQL Response contains '"id"'
@@ -64,9 +57,7 @@ Feature: GoRest GraphQL API
   Scenario: 3: Get created user data using GraphQL
     When I send a GQL request with body
       """
-        {
-            "query":
-                "query{
+        query {
                     user(id: 99999) { 
                         id 
                         name 
@@ -74,22 +65,19 @@ Feature: GoRest GraphQL API
                         gender 
                         status 
                     }
-                }"
-        }
+                }
       """
     Then GQL Response code is 200
     And GQL Response contains correct user info
     But GQL Response does not contains '"errors"'
-    
+
   Scenario: 4: Change created user details using GraphQL
     When I send a GQL request with body
       """
-        {
-            "query":
-                "mutation{
+        mutation  {
                     updateUser(input: {
                             id: 99999 
-                            name: \"Donald Duck\"
+                            name: "Donald Duck"
                     }) 
                     {
                         user {
@@ -100,8 +88,7 @@ Feature: GoRest GraphQL API
                             status
                         }
                     }
-                }"
-        }
+                  }
       """
     Then GQL Response code is 200
     And GQL Response contains '"name":"Donald Duck"'
@@ -110,9 +97,7 @@ Feature: GoRest GraphQL API
   Scenario: 5: Delete created user using GraphQL
     When I send a GQL request with body
       """
-        {
-            "query":
-                "mutation{
+        mutation  {
                     deleteUser(input: {
                         id: 99999
                     }) 
@@ -125,8 +110,7 @@ Feature: GoRest GraphQL API
                             status
                         }
                     }
-                }"
-        }
+                  }
       """
     Then GQL Response code is 200
     And GQL Response contains '"id"'
@@ -135,9 +119,7 @@ Feature: GoRest GraphQL API
   Scenario: 6: Get deleted user data using GraphQL
     When I send a GQL request with body
       """
-        {
-            "query":
-                "query{
+        query {
                     user(id: 99999) { 
                         id 
                         name 
@@ -145,8 +127,7 @@ Feature: GoRest GraphQL API
                         gender 
                         status 
                     }
-                }"
-        }
+              }
       """
     Then GQL Response code is 200
     And GQL Response contains '"user":null'
