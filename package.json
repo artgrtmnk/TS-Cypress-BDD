@@ -1,15 +1,20 @@
 {
-  "name": "JS-Cypress-BDD",
+  "name": "TS-Cypress-BDD",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:ui": "npx cypress open",
+    "cy:headless": "npx cypress run",
+    "cy:allure": "allure generate --clean --output allure-results && yarn cy:headless --env allure=true",
+    "allure:open": "allure serve allure-results",
+    "cy:allure:open": "allure generate --clean --output allure-results && yarn cy:allure && yarn allure:open"
   },
   "keywords": [],
   "author": "Artem Gritsaenko",
   "license": "ISC",
   "devDependencies": {
+    "@shelex/cypress-allure-plugin": "^2.28.5",
     "cypress": "^9.7.0",
     "cypress-cucumber-preprocessor": "^4.3.1"
   },
