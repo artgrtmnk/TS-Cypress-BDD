@@ -19,7 +19,7 @@ pipeline {
         stage ('Testing Stage') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh 'yarn cy:allure'
+                    sh 'allure generate --clean --output allure-results && npx cypress run --env allure=true'
                 }
             }
         }
