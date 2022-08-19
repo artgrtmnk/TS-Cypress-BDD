@@ -14,6 +14,7 @@
 - API: Cypress
 - Reporting: Allure
 
+## Locally on your machine
 ### Installation
 1. Install [Node.js](https://nodejs.org/en/).
 2. Install [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
@@ -23,18 +24,19 @@
 6. In `projects_root_folder/cypress/fixtures` folder paste your token into `token.json` file as a value for the `token` key.
 7. Additional step: You need to install [Allure](https://github.com/allure-framework/allure2), if you want to use it.
 
-### Running tests [Locally]
+### Running tests
 1. You can use Cypress GUI with `yarn cy:ui` command.
 2. As well, you can start test suite with `yarn cy:headless` command.
 3. Also, you can start the suite and generate Allure report with `yarn cy:allure` and after it, open it with `yarn allure:open`.
 4. And the most prefered options is to use `yarn cy:allure:open` command, that would execute the suite, generate and open the report as an HTML doc.
 
-### After test [Locally]
+### After test
 - Framework creates allure reports, that located in `allure-results` folder.
 - Check the `Running tests` section to get more info about working with Allure reports.
 - **Note: Allure folder would be cleared within the next test run.**
 
-### Running tests [Jenkins]
+## Jenkins CI
+### Running tests
 1. Install [Jenkins](https://www.jenkins.io).
 2. Install default plugins in Jenkins.
 3. As well there is a list of plugins that you need to install additionally via Jenkins > Manage Jenkins > Manage Plugins: Allure Jenkins Plugin, Git Plugin, GitHub Branch Source Plugin, GitHub plugin, HTML Publisher plugin, NodeJS Plugin, Pipeline, Pipeline: GitHub Groovy Libraries.
@@ -50,11 +52,11 @@
 8. Paste your GoRest token into the token var field.
 9. Click `Build` button
 
-### After test [Jenkins]
+### After test
 - Allure report would be generated automatically. The only thing you need to do is to click on `Allure Report` button in the left nav menu.
 - **Note: Allure folder would be cleared within the next test run.**
 
 ![Successful pipeline from Jenkins](Success_Jenkins_Pipeline.png)
 
-### Post scriptum
+## Post scriptum
 **_Antipattern was used in this sample framework: Test scenarios from API feature files are running sequentially, just because that's a sample. Never do it in a real project. Each test scenario should be independent and all of the pre-conditions should be done within the Given steps!_**
