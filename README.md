@@ -39,7 +39,7 @@
 ### Installation
 1. Install [Jenkins](https://www.jenkins.io).
 2. Install default plugins in Jenkins.
-3. As well there is a list of plugins that you need to install additionally via Jenkins > Manage Jenkins > Manage Plugins: Allure Jenkins Plugin, Git Plugin, GitHub Branch Source Plugin, GitHub plugin, HTML Publisher plugin, NodeJS Plugin, Pipeline, Pipeline: GitHub Groovy Libraries.
+3. As well there is a list of plugins that you need to install additionally via Jenkins > Manage Jenkins > Manage Plugins: Allure Jenkins Plugin, HTML Publisher plugin, NodeJS Plugin.
 4. In Jenkins > Manage Jenkins > Global Tool Configuration click on `NodeJS installations...` button in `NodeJS` section and add name `node`, choose last version. Then apply and save.
 5. Create a new Job with `Pipeline` type.
 6. Job configuration:
