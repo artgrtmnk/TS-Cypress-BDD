@@ -1,26 +1,25 @@
 pipeline {
     agent any
-    tools {nodejs "node17_0_0"}
+    tools {nodejs "node"}
     stages {
         stage ('Passing token') {
             steps {
                 script{
                     def jsonFileString = readFile file: "${WORKSPACE}/cypress/fixtures/token.json"
                     jsonFileString = jsonFileString.replaceAll("YOUR_TOKEN", params.token)
-                    writeFile file: "${WORKSPACE}/token.json", text: jsonFileString
+                    writeFile file: "${WORKSPACE}/cypress/fixtures/token.json", text: jsonFileString
                 }
             }
         }
         stage ('Dependencies Installation Stage') {
             steps {
                 sh 'npm i'
+                sh 'npm install -g allure-commandline --save-dev'
             }
         }
         stage ('Testing Stage') {
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh 'allure generate --clean --output allure-results && npx cypress run --env allure=true'
-                }
+                sh 'allure generate --clean --output allure-results && npx cypress run --env allure=true'
             }
         }
         stage ('Allure report Stage') {
