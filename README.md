@@ -36,7 +36,7 @@
 - **Note: Allure folder would be cleared within the next test run.**
 
 ## Jenkins CI
-### Running tests
+### Installation
 1. Install [Jenkins](https://www.jenkins.io).
 2. Install default plugins in Jenkins.
 3. As well there is a list of plugins that you need to install additionally via Jenkins > Manage Jenkins > Manage Plugins: Allure Jenkins Plugin, Git Plugin, GitHub Branch Source Plugin, GitHub plugin, HTML Publisher plugin, NodeJS Plugin, Pipeline, Pipeline: GitHub Groovy Libraries.
@@ -48,9 +48,11 @@
 - Scroll down to the Pipeline section and choose `Pipeline script from SCM`, then choose Git as an option.
 - Paste my project's url to the repo's url field: `https://github.com/artgrtmnk/TS-Cypress-BDD/` and specify the branch name a bit lower as: `*/main`.
 - Apply and Save the pipeline.
-7. Click on `Build with Parameters` in the left nav menu.
-8. Paste your GoRest token into the token var field.
-9. Click `Build` button
+
+### Running tests
+1. Click on `Build with Parameters` in the left nav menu.
+2. Paste your GoRest token into the token var field.
+3. Click `Build` button.
 
 ### After test
 - Allure report would be generated automatically. The only thing you need to do is to click on `Allure Report` button in the left nav menu.
